@@ -9,27 +9,13 @@ from werkzeug.urls import url_parse
 from flask_mysqldb   import MySQL
 from flask_sqlalchemy import SQLAlchemy
 
-from configBlog import PWD
+from Configuracion import configBlog
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '7110c8ae51a4b5af97be6534caef90e4bb9bdcb3380af008f90b23a5d1616bf319bc298105da20fe'
+#app.config['SECRET_KEY'] = '7110c8ae51a4b5af97be6534caef90e4bb9bdcb3380af008f90b23a5d1616bf319bc298105da20fe'
+app.config.from_object(configBlog)
 
-#app.config.from_object(Configurar)
-
-DEBUG = True
-DB_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(username="root", password="", hostname="localhost", databasename="gqcurso5x")
-SQLALCHEMY_DATABASE_URI = DB_URI
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-
-app.config["SQLALCHEMY_DATABASE_URI"] = DB_URI
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-# base de datos
-#app.config['MYSQL_HOST']= 'localhost'
-#app.config['MYSQL_USER']= 'localhost'
-#app.config['MYSQL_PASSWORD']= 'localhost'
-#app.config['MYSQL_DB']= 'localhost'
 
 
 login_manager = LoginManager(app)
@@ -50,9 +36,6 @@ def show_post(slug):
     if post is None:
         abort(404)
     return render_template("post_view.html", post=post)
-
-
-
 
 @app.route("/signup/", methods=["GET", "POST"])
 def show_signup_form():
