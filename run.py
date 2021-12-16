@@ -18,7 +18,7 @@ app.config['SECRET_KEY'] = '7110c8ae51a4b5af97be6534caef90e4bb9bdcb3380af008f90b
 #app.config.from_object(Configurar)
 
 DEBUG = True
-DB_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(username="root", password="", hostname="localhost", databasename="")
+DB_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(username="root", password="", hostname="localhost", databasename="gqcurso5x")
 SQLALCHEMY_DATABASE_URI = DB_URI
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
